@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Buttons from './components/Buttons';
+import Headers from './components/Headers';
+import Donations from './components/Donations';
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+      donations: [{ name: 'Robert', amount: 400, caption: 'takeover the world' },
+      { name: 'Bill', amount: 30, caption: 'Cheat' }, 
+      { name: 'Bob', amount: 50, caption: 'Sneeze' }
+    ],
+
+    };
+
+  }
+
   render() {
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        <Headers name={'Rob'} discription={'Help me take over the world'} />
+
+        <div class='container'>
+          <div class='row'>
+            <ul class="col-4 list-unstyled recent-donations">
+              <h5 class='my-4'>Recent Donations</h5>
+              {this.state.donations.map((obj, index) => {
+                return <Donations name={obj.name} amount={obj.amount} caption={obj.caption}/>
+              })}
+            </ul>
+          </div>
+        </div>
+
+      </>
     );
   }
 }
