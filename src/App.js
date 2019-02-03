@@ -6,7 +6,9 @@ import Progress from './components/Progress';
 import Form from './components/Form';
 
 
+
 import DonationsList from './containers/DonationList';
+
 
 
 class App extends Component {
@@ -28,14 +30,13 @@ class App extends Component {
 
   }
 
-  /*
-    <ul class="col-4 list-unstyled recent-donations">
-                <h5 class='my-4'>Recent Donations</h5>
-                {(this.state.donations.length > 0) ? this.state.donations.map((obj, i) => {
-                  return <Donations name={obj.name} amount={obj.amount} caption={obj.caption} key={i} />
-                }) : <h3> No Donations</h3>}
-              </ul>
-  */
+  addDonation = (name, amount, caption) => {
+    const arr = this.state.donations;
+    arr.push({name, amount, caption})
+    this.setState({
+      donations: arr,
+    })
+  }
 
   render() {
 
@@ -43,25 +44,16 @@ class App extends Component {
     return (
       <>
         <Headers name={this.state.name} description={this.state.description} />
-
-        <div class='container'>
-          <div class='row'>
-
+        <div className='container'>
+          <div className='row'>
             <DonationsList donations={this.state.donations} />
-
-            <div class='col-8'>
+            <div className='col-8'>
               <Progress raised={this.state.raised} reach={this.state.reach}/>
-            
               <hr />
-
-              <Form />
-
+              <Form addDonation={this.addDonation}/>
             </div>
-
-
           </div>
         </div>
-
       </>
     );
   }
