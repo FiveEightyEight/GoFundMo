@@ -11,7 +11,7 @@ class Form extends Component {
     }
 
     resetForm = () => {
-        this.setState = ({
+        this.setState ({
             name: '',
             amount: 5,
             caption: ''
@@ -49,7 +49,7 @@ class Form extends Component {
             <form>
                 <div className="form-group">
                     <label>Name</label>
-                    <input type="text" className="form-control" id="nameInput" placeholder="Not Sure" value={this.state.name} onChange={this.nameValidation} />
+                    <input type="text" className="form-control" id="nameInput" placeholder="Name" value={this.state.name} onChange={this.nameValidation} />
                 </div>
                 <div className="form-group">
                     <label>Caption</label>
