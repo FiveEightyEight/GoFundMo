@@ -24,7 +24,7 @@ class App extends Component {
       //  { name: 'Bob', amount: 50, caption: 'Sneeze' }
       donations: [],
 
-      raised: 2500,
+      raised: 0,
 
     };
 
@@ -32,13 +32,18 @@ class App extends Component {
 
   addDonation = (name, amount, caption) => {
     const arr = this.state.donations;
-    arr.push({name, amount, caption})
+    arr.unshift({name, amount, caption})
+    let newAmount = amount + this.state.raised;
     this.setState({
       donations: arr,
+      raised: newAmount,
     })
   }
 
+
+
   render() {
+
 
 
     return (
